@@ -1,9 +1,11 @@
 package com.mscszn.backend.service.impl;
 
+import java.io.IOException;
 import java.util.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.mscszn.backend.model.Music;
@@ -20,7 +22,7 @@ public class MusicServiceImpl implements MusicService{
         return (List<Music>) musicRepo.findAll();
     }
 
-    public Music getMusic(String musicId){
+    public Music getMusic(int musicId){
         Optional<Music> musicData = musicRepo.findById(musicId);
         if(musicData.isPresent()){
             return musicData.get();
@@ -28,9 +30,9 @@ public class MusicServiceImpl implements MusicService{
         return null;
     }
 
-    // public Music addMusic(Music music, MultipartFile file){
-    //     try{
-    //         music.setStream(operations.getResource(file).getInputStream());
-    //     }
-    // }
+    public Music addMusicWithFile(String musicName, String artistName, String genre, String trackLength, MultipartFile file) throws IOException{
+        String filename = StringUtils.cleanPath(file.getOriginalFilename());
+        Music music = new Music(musicName, artistName, genre, trackLength, file.getBytes(), filename);
+        return musicRepo.save(music);
+    }
 }

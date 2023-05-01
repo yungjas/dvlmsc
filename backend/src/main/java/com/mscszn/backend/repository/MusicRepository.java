@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.mscszn.backend.model.Music;
 
 @Repository
-public interface MusicRepository extends CrudRepository<Music, String>{
+public interface MusicRepository extends CrudRepository<Music, Integer>{
     
 }

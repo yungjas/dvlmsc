@@ -1,8 +1,10 @@
 package com.mscszn.backend.service;
 
+import java.io.IOException;
 import java.util.List;
 
 import org.springframework.stereotype.Component;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.mscszn.backend.model.Music;
 
@@ -10,7 +12,7 @@ import com.mscszn.backend.model.Music;
 public interface MusicService {
     List<Music> getAllMusic();
     
-    Music getMusic(String musicId);
+    Music getMusic(int musicId);
 
-    //Music addMusic(Music music);
+    Music addMusicWithFile(String musicName, String artistName, String genre, String trackLength, MultipartFile file) throws IOException;
 }
