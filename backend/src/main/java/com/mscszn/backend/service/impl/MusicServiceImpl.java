@@ -4,6 +4,7 @@ import java.util.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.mscszn.backend.model.Music;
 import com.mscszn.backend.repository.MusicRepository;
@@ -16,7 +17,7 @@ public class MusicServiceImpl implements MusicService{
     private MusicRepository musicRepo;
 
     public List<Music> getAllMusic(){
-        return musicRepo.findAll();
+        return (List<Music>) musicRepo.findAll();
     }
 
     public Music getMusic(String musicId){
@@ -26,4 +27,10 @@ public class MusicServiceImpl implements MusicService{
         }
         return null;
     }
+
+    // public Music addMusic(Music music, MultipartFile file){
+    //     try{
+    //         music.setStream(operations.getResource(file).getInputStream());
+    //     }
+    // }
 }

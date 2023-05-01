@@ -9,5 +9,8 @@ import com.mscszn.backend.model.Music;
 @Component
 public interface MusicService {
     List<Music> getAllMusic();
+    
     Music getMusic(String musicId);
+
+    //Music addMusic(Music music);
 }

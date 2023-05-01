@@ -1,21 +1,27 @@
 package com.mscszn.backend.model;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
+import java.io.InputStream;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+@Entity
+@Table(name = "music")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Document(collection = "music")
 public class Music {
     @Id
-    private String musicId;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int musicId;
 
     private String musicName;
 
@@ -24,4 +30,7 @@ public class Music {
     private String genre;
 
     private String trackLength;
+
+    // stores url of music files
+    //private InputStream stream;
 }
