@@ -22,6 +22,14 @@ public class MusicServiceImpl implements MusicService{
         return (List<Music>) musicRepo.findAll();
     }
 
+    public List<Music> getMusicByGenre(String genre){
+        List<Music> musicList = musicRepo.findMusicByGenre(genre);
+        if(musicList != null){
+            return musicList;
+        }
+        return null;
+    }
+
     public Music getMusic(int musicId){
         Optional<Music> musicData = musicRepo.findById(musicId);
         if(musicData.isPresent()){

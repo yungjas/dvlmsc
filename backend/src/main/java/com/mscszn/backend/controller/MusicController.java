@@ -27,6 +27,15 @@ public class MusicController {
         return new ResponseEntity<>(allMusic, HttpStatus.OK);
     }
 
+    @GetMapping("genre/{genre}")
+    public ResponseEntity<Object> getMusicByGenre(@PathVariable String genre){
+        List<Music> musicData = musicService.getMusicByGenre(genre);
+        if(musicData == null){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(musicData, HttpStatus.OK);
+    }
+
     @GetMapping("{musicId}")
     public ResponseEntity<Object> getMusic(@PathVariable int musicId){
         Music music = musicService.getMusic(musicId);

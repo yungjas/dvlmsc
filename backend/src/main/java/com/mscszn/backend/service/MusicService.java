@@ -11,6 +11,8 @@ import com.mscszn.backend.model.Music;
 @Component
 public interface MusicService {
     List<Music> getAllMusic();
+
+    List<Music> getMusicByGenre(String genre);
     
     Music getMusic(int musicId);
 
